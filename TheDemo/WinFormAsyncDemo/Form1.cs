@@ -20,6 +20,8 @@ namespace WinFormAsyncDemo
             InitializeComponent();
         }
 
+        private const string WebApiUrl = "https://gorest.co.in/public/v1/posts";
+
         private void SyncDemoButton_Click(object sender, EventArgs e)
         {
             var count = Convert.ToInt32(CountNumberUpDown.Value);
@@ -27,7 +29,7 @@ namespace WinFormAsyncDemo
             for (int i = 0; i < count; i++)
             {
                 var id = validPostIds[i % validPostIds.Length];
-                var post = $"https://gorest.co.in/public/v1/posts/{id}".GetJsonAsync<Post>().Result;
+                var post = $"{WebApiUrl}/{id}".GetJsonAsync<Post>().Result;
                 OutputListBox.Items.Add(post.Data.Title);
             }
         }
@@ -39,7 +41,7 @@ namespace WinFormAsyncDemo
             for (int i = 0; i < count; i++)
             {
                 var id = validPostIds[i % validPostIds.Length];
-                var post = await $"https://gorest.co.in/public/v1/posts/{id}".GetJsonAsync<Post>();
+                var post = await $"{WebApiUrl}/{id}".GetJsonAsync<Post>();
                 OutputListBox.Items.Add(post.Data.Title);
             }
         }
