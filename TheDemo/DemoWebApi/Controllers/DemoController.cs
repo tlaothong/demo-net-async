@@ -1,10 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace DemoWebApi.Controllers
 {
@@ -20,7 +15,7 @@ namespace DemoWebApi.Controllers
                 Data = new Data
                 {
                     Id = id,
-                    Title = $"Title #{id} {new string('*', id % 8)}",
+                    Title = $"Title #{id} {new string('*', id % 8 + 1)}",
                 },
             };
         }
